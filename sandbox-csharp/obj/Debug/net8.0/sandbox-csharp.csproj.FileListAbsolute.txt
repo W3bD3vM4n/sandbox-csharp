@@ -1,0 +1,14 @@
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\bin\Debug\net8.0\sandbox-csharp.exe
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\bin\Debug\net8.0\sandbox-csharp.deps.json
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\bin\Debug\net8.0\sandbox-csharp.runtimeconfig.json
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\bin\Debug\net8.0\sandbox-csharp.dll
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\bin\Debug\net8.0\sandbox-csharp.pdb
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\obj\Debug\net8.0\sandbox-csharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\obj\Debug\net8.0\sandbox-csharp.AssemblyInfoInputs.cache
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\obj\Debug\net8.0\sandbox-csharp.AssemblyInfo.cs
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\obj\Debug\net8.0\sandbox-csharp.csproj.CoreCompileInputs.cache
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\obj\Debug\net8.0\sandbox-csharp.dll
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\obj\Debug\net8.0\refint\sandbox-csharp.dll
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\obj\Debug\net8.0\sandbox-csharp.pdb
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\obj\Debug\net8.0\sandbox-csharp.genruntimeconfig.cache
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\obj\Debug\net8.0\ref\sandbox-csharp.dll

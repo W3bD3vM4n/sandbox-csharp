@@ -1,0 +1,7 @@
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\ProductosAPI\obj\Debug\net8.0\ProductosAPI.csproj.AssemblyReference.cache
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\ProductosAPI\obj\Debug\net8.0\ProductosAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\ProductosAPI\obj\Debug\net8.0\ProductosAPI.AssemblyInfoInputs.cache
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\ProductosAPI\obj\Debug\net8.0\ProductosAPI.AssemblyInfo.cs
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\ProductosAPI\obj\Debug\net8.0\ProductosAPI.csproj.CoreCompileInputs.cache
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\ProductosAPI\obj\Debug\net8.0\ProductosAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\hr-aw\source\legacy\console\sandbox-csharp\ProductosAPI\obj\Debug\net8.0\ProductosAPI.MvcApplicationPartsAssemblyInfo.cache
