@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/h4ss4n/Code/csharp/sandbox-csharp/sandbox-csharp/sandbox-csharp.csproj": {}
+    "/home/h4ss4n/Code/csharp/sandbox-csharp/api-loop-three/api-loop-three.csproj": {}
   },
   "projects": {
-    "/home/h4ss4n/Code/csharp/sandbox-csharp/sandbox-csharp/sandbox-csharp.csproj": {
+    "/home/h4ss4n/Code/csharp/sandbox-csharp/api-loop-three/api-loop-three.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/h4ss4n/Code/csharp/sandbox-csharp/sandbox-csharp/sandbox-csharp.csproj",
-        "projectName": "sandbox-csharp",
-        "projectPath": "/home/h4ss4n/Code/csharp/sandbox-csharp/sandbox-csharp/sandbox-csharp.csproj",
+        "projectUniqueName": "/home/h4ss4n/Code/csharp/sandbox-csharp/api-loop-three/api-loop-three.csproj",
+        "projectName": "api-loop-three",
+        "projectPath": "/home/h4ss4n/Code/csharp/sandbox-csharp/api-loop-three/api-loop-three.csproj",
         "packagesPath": "/home/h4ss4n/.nuget/packages/",
-        "outputPath": "/home/h4ss4n/Code/csharp/sandbox-csharp/sandbox-csharp/obj/",
+        "outputPath": "/home/h4ss4n/Code/csharp/sandbox-csharp/api-loop-three/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/h4ss4n/.nuget/NuGet/NuGet.Config"
@@ -49,6 +49,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

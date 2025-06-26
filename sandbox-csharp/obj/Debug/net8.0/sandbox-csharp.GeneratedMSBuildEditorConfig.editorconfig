@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = sandbox_csharp
-build_property.ProjectDir = C:\Users\hr-aw\source\legacy\console\sandbox-csharp\sandbox-csharp\
+build_property.ProjectDir = /home/h4ss4n/Code/csharp/sandbox-csharp/sandbox-csharp/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
