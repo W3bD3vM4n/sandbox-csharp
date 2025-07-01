@@ -4,17 +4,19 @@ namespace ApiLoopThree.Services;
 
 public class PricePlanService : IPricePlanService
 {
-    // What's the interface is used for?
+    // A kind of log message (it’s never used in the rest of this service)
     public interface Debug
     {
         void Log(string s);
     }
 
     // Fields
+    // Holds the available price plans (injected from Startup)
     private readonly List<PricePlan> _pricePlans;
+    // Fetch meter readings for a given smart meter ID
     private IMeterReadingService _meterReadingService;
 
-    // Constructor
+    // Constructor (doing DI)
     public PricePlanService(List<PricePlan> pricePlan, IMeterReadingService meterReadingService)
     {
         _pricePlans = pricePlan;
@@ -24,43 +26,60 @@ public class PricePlanService : IPricePlanService
     // Math Operation #1
     private decimal calculateAverageReading(List<ElectricityReading> electricityReadings)
     {
-        var newSummedReadings = electricityReadings.Select(readings => readings.Reading).Aggregate((reading, accumulator) => reading + accumulator);
+        var newSummedReadings = electricityReadings
+            // Extracts each reading value
+            .Select(readings => readings.Reading)
+            // Sums them with Aggregate
+            .Aggregate((reading, accumulator) => reading + accumulator);
 
+        // Divides by the count to get the average reading (units per reading interval)
         return newSummedReadings / electricityReadings.Count();
     }
 
     // Math Operation #2
     private decimal calculateTimeElapsed(List<ElectricityReading> electricityReadings)
     {
+        // Finds the earliest timestamp
         var first = electricityReadings.Min(reading => reading.Time);
+        // Finds the latest timestamp
         var last = electricityReadings.Max(reading => reading.Time);
 
-        // What's happening here?
+        // Subtracts to get a TimeSpan to total hours
         return (decimal)(last - first).TotalHours;
     }
 
     // Math Operation #3
     private decimal calculateCost(List<ElectricityReading> electricityReadings, PricePlan pricePlan)
     {
+        // Compute average consumption per reading interval
         var average = calculateAverageReading(electricityReadings);
         var timeElapsed = calculateTimeElapsed(electricityReadings);
+        // Divide to get the average consumption per hour
         var averagedCost = average / timeElapsed;
 
+        // Multiply by the plan's unit rate (price per unit) to get a cost
+        // and round to three decimal places
         return Math.Round(averagedCost * pricePlan.UnitRate, 3);
     }
 
     public Dictionary<string, decimal> GetConsumptionCostOfElectricityReadingsForEachPricePlan(string smartMeterId)
     {
-        // A variable is storing a method outcome?
+        // Store the method outcome
         List<ElectricityReading> electricityReadings = _meterReadingService.GetReadings(smartMeterId);
 
         if (!electricityReadings.Any())
         {
-            // What am I returning here?
+            // Return an empty dictionary, which means
+            // "no readings, so no cost to compute"
             return new Dictionary<string, decimal>();
         }
         
-        // Use of "Math Operation #3"
-        return _pricePlans.ToDictionary(plan => plan.PlanName, plan => calculateCost(electricityReadings, plan));
+        // Returns a dictionary mapping each plan’s name to its calculated cost
+        // for the given meter’s readings
+        return _pricePlans.ToDictionary(
+            // For each PricePlan in _pricePlans, creates a key/value pair,
+            plan => plan.PlanName,
+            plan => calculateCost(electricityReadings, plan)
+            );
     }
 }

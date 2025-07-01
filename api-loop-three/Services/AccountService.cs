@@ -2,15 +2,17 @@ namespace ApiLoopThree.Services;
 
 public class AccountService : IAccountService
 {
+    // Mapping between smart meter IDs (keys) and price plan IDs (values)
+    // to look up which plan applies to a given meter
     private Dictionary<string, string> _smartMeterToPricePlanAccounts;
 
-    // Constructor
+    // Constructor injection to receive the dictionary
+    // from the DI container (registered as a singleton earlier)
     public AccountService(Dictionary<string, string> smartMeterToPricePlanAccounts)
     {
         _smartMeterToPricePlanAccounts = smartMeterToPricePlanAccounts;
     }
 
-    // Method (what's the logic behind it?)
     public string GetPricePlanIdForSmartMeterId(string smartMeterId)
     {
         if (!_smartMeterToPricePlanAccounts.ContainsKey(smartMeterId))
@@ -18,7 +20,7 @@ public class AccountService : IAccountService
             return null;
         }
         
-        // I'm returning and ID from a Dictionary?
+        // Return the associated price plan ID
         return _smartMeterToPricePlanAccounts[smartMeterId];
     }
 }
