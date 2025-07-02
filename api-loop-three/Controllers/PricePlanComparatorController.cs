@@ -26,8 +26,10 @@ public class PricePlanComparatorController : Controller
     [HttpGet("compare-all/{smartMeterId}")]
     public ObjectResult CalculatedCostForEachPricePlan(string smartMeterId)
     {
+        // Comes from [8.0]
         // I'm calling Services' methods
         string pricePlanId = _accountService.GetPricePlanIdForSmartMeterId(smartMeterId);
+        // Comes from [10.0]
         Dictionary<string, decimal> costPerPricePlan = _pricePlanService.GetConsumptionCostOfElectricityReadingsForEachPricePlan(smartMeterId);
 
         // If there are no readings (or no such meter),
@@ -49,6 +51,7 @@ public class PricePlanComparatorController : Controller
     [HttpGet("recommend/{smartMeterId}")]
     public ObjectResult RecommendCheapestPricePlans(string smartMeterId, int? limit = null)
     {
+        // Comes from [10.0]
         var consumptionForPricePlans =
             _pricePlanService.GetConsumptionCostOfElectricityReadingsForEachPricePlan(smartMeterId);
 

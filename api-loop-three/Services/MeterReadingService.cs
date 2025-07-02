@@ -4,7 +4,7 @@ namespace ApiLoopThree.Services;
 
 public class MeterReadingService : IMeterReadingService
 {
-   // In‑memory “database” of readings
+   // Comes from [4.0]
    // Map from smart‑meter IDs to their list of electricity readings
    public Dictionary<string, List<ElectricityReading>> MeterAssociatedReadings { get; set; }
    
@@ -15,6 +15,7 @@ public class MeterReadingService : IMeterReadingService
       MeterAssociatedReadings = meterAssociatedReadings;
    }
 
+   // Comes from [9.1]
    // Method to get the meter readings
    public List<ElectricityReading> GetReadings(string smartMeterId)
    {
@@ -28,6 +29,7 @@ public class MeterReadingService : IMeterReadingService
       return new List<ElectricityReading>();
    }
 
+   // Comes from [9.2]
    // Method to save a new meter reading
    public void StoreReadings(string smartMeterId, List<ElectricityReading> electricityReadings)
    {

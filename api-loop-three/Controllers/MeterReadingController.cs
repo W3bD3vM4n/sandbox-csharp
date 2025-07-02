@@ -2,6 +2,7 @@ using ApiLoopThree.Domain;
 using ApiLoopThree.Services;
 using Microsoft.AspNetCore.Mvc;
 
+// 11. CONTROLLER
 namespace ApiLoopThree.Controllers;
 
 [Route("readings")]
@@ -21,6 +22,7 @@ public class MeterReadingController : Controller
     // (likely JSON) into that MeterReadings object
     public ObjectResult Post([FromBody] MeterReadings meterReadings)
     {
+        // Comes from [11.1]
         // Checks for null or empty values
         if (!IsMeterReadingsValid(meterReadings))
         {
@@ -28,6 +30,8 @@ public class MeterReadingController : Controller
             // for error responses (there are about a dozen)
             return new BadRequestObjectResult("Internal Server Error");
         }
+        
+        // Comes from [9.2]
         _meterReadingService.StoreReadings(
             meterReadings.SmartMeterId,
             meterReadings.ElectricityReadings
@@ -37,7 +41,7 @@ public class MeterReadingController : Controller
         return new OkObjectResult("{}");
     }
 
-    // Prevents downstream errors (e.g., null refs or storing empty data)
+    // [11.1] Prevents downstream errors (e.g., null refs or storing empty data)
     private bool IsMeterReadingsValid(MeterReadings meterReadings)
     {
         string smartMeterId = meterReadings.SmartMeterId;
@@ -56,8 +60,8 @@ public class MeterReadingController : Controller
     // The parameter is populated from the URL placeholder
     public ObjectResult GetReading(string smartMeterId)
     {
-        // Returns a new object list from the action method
-        // with a "200 OK" response
+        // Comes from [9.1]
+        // Returns a new object list from the action method (200 OK response)
         return new OkObjectResult(
             _meterReadingService.GetReadings(smartMeterId)
             );

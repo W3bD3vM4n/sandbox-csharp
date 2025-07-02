@@ -7,25 +7,27 @@ namespace ApiLoopThree;
 
 public class Startup
 {
+    // Constants [2.0]
     private const string MOST_EVIL_PRICE_PLAN_ID = "price-plan-0";
     private const string RENEWABLES_PRICE_PLAN_ID = "price-plan-1";
     private const string STANDARD_PRICE_PLAN_ID = "price-plan-2";
 
-    /* The IConfiguration object (part of Microsoft.Extensions.Configuration namespace)
-       is injected by the ASP.NET Core runtime.
-       It provides access to configuration settings from appsettings.json. */
+    // [TEMPLATE]
+    // [2.2] The IConfiguration is injected by the ASP.NET Core runtime
     public Startup(IConfiguration configuration)
     {
+        // Provide access to configuration from appsettings.json
         Configuration = configuration;
     }
     
+    // [TEMPLATE]
+    // [2.1] IConfiguration object (from Microsoft.Extensions.Configuration)
     public IConfiguration Configuration { get; }
 
-    // This method gets called by the runtime.
-    // Use this method to add services to the container.
+    // Call by runtime, add services to the container
     public void ConfigureServices(IServiceCollection services)
     {
-        // The variable saves a method
+        // The variable saves a method from [2.4]
         var readings = GenerateMeterElectricityReadings();
 
         // The list from Domain > PricePlan.cs conforms an object
@@ -35,9 +37,9 @@ public class Startup
             new PricePlan
             {
                 // It comes from the constant declaration on top
-                PlanName = MOST_EVIL_PRICE_PLAN_ID,
+                PlanName = MOST_EVIL_PRICE_PLAN_ID, // [2.0]
                 // It comes from Enums > Supplier
-                EnergySupplier = Enums.Supplier.DrEvilsDarkEnergy,
+                EnergySupplier = Enums.Supplier.DrEvilsDarkEnergy, // [3.0]
                 // Hardcoded decimals manually assigned
                 UnitRate = 10m,
                 // It comes from Domain > PricePlan
@@ -59,8 +61,10 @@ public class Startup
             }
         };
 
+        // [TEMPLATE]
         // Adds MVC services and disables legacy Endpoint Routing
         services.AddMvc(options => options.EnableEndpointRouting = false);
+        // [CUSTOM]
         // Creates a new instance of the service every time requested
         services.AddTransient<IAccountService, AccountService>();
         services.AddTransient<IMeterReadingService, MeterReadingService>();
@@ -68,11 +72,12 @@ public class Startup
         // Creates and share a single instance for the entire app lifetime
         services.AddSingleton((IServiceProvider arg) => readings);
         services.AddSingleton((IServiceProvider arg) => pricePlans);
+        // Comes from [2.3]
         services.AddSingleton((IServiceProvider arg) => SmartMeterToPricePlanAccounts);
     }
 
-    // This method gets called by the runtime.
-    // Use this method to configure the HTTP request pipeline.
+    // [TEMPLATE]
+    // Call by the runtime, configures the HTTP request pipeline
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment())
@@ -83,29 +88,32 @@ public class Startup
         app.UseMvc();
     }
 
-    // Maps each Smart Meter ID (string) to a list
-    // of generated electricity readings
+    // [2.4] Maps each Smart Meter ID to a list of readings
     private Dictionary<string, List<ElectricityReading>> GenerateMeterElectricityReadings()
     {
         var readings = new Dictionary<string, List<ElectricityReading>>();
         var generator = new ElectricityReadingGenerator();
+        // Comes from [2.3]
         var smartMeterIds = SmartMeterToPricePlanAccounts.Select(mtpp => mtpp.Key);
 
         foreach (var smartMeterId in smartMeterIds)
         {
+            // Comes from [7.1]
             readings.Add(smartMeterId, generator.Generate(20));
         }
 
         return readings;
     }
 
-    // Maps each Smart Meter ID to a Price Plan ID
+    // [CUSTOM]
+    // [2.3] Maps each Smart Meter ID to a Price Plan ID
     public Dictionary<string, string> SmartMeterToPricePlanAccounts
     {
         get
         {
             Dictionary<string, string> smartMeterToPricePlanAccounts = new Dictionary<string, string>();
             
+            // Comes from [2.0]
             smartMeterToPricePlanAccounts.Add("smart-meter-0", MOST_EVIL_PRICE_PLAN_ID);
             smartMeterToPricePlanAccounts.Add("smart-meter-1", RENEWABLES_PRICE_PLAN_ID);
             smartMeterToPricePlanAccounts.Add("smart-meter-2", MOST_EVIL_PRICE_PLAN_ID);

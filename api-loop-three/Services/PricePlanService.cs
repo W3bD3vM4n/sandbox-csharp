@@ -62,8 +62,10 @@ public class PricePlanService : IPricePlanService
         return Math.Round(averagedCost * pricePlan.UnitRate, 3);
     }
 
+    // Comes from [10.0]
     public Dictionary<string, decimal> GetConsumptionCostOfElectricityReadingsForEachPricePlan(string smartMeterId)
     {
+        // Comes from [9.1]
         // Store the method outcome
         List<ElectricityReading> electricityReadings = _meterReadingService.GetReadings(smartMeterId);
 

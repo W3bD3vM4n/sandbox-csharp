@@ -1,12 +1,15 @@
 using ApiLoopThree.Domain;
 
+// 7. FOR OBJECT
 namespace ApiLoopThree.Generator;
 
+// [7.0] Class
 public class ElectricityReadingGenerator
 {
-    // Simulates a list of ElectricityReading for a smart meter
+    // [7.1] Simulates a list of ElectricityReading for a smart meter
     public List<ElectricityReading> Generate(int number)
     {
+        // Comes from [4.0]
         // Initializes an empty list
         var readings = new List<ElectricityReading>();
         // Initializes random decimals
