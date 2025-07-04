@@ -66,8 +66,11 @@ public class Startup
         services.AddMvc(options => options.EnableEndpointRouting = false);
         // [CUSTOM]
         // Creates a new instance of the service every time requested
+        // Comes from [8.0]
         services.AddTransient<IAccountService, AccountService>();
+        // Comes from [9.0]
         services.AddTransient<IMeterReadingService, MeterReadingService>();
+        // Comes from [10.0]
         services.AddTransient<IPricePlanService, PricePlanService>();
         // Creates and share a single instance for the entire app lifetime
         services.AddSingleton((IServiceProvider arg) => readings);
